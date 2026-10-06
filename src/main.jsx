@@ -19,7 +19,7 @@ function App(){
  const [sent,setSent]=useState(false);
  const [menuOpen,setMenuOpen]=useState(false);
  const [showSticky,setShowSticky]=useState(false);
- useEffect(()=>{const onScroll=()=>setShowSticky(window.scrollY>620);onScroll();window.addEventListener("scroll",onScroll,{passive:true});return()=>window.removeEventListener("scroll",onScroll)},[]);
+ useEffect(()=>{const onScroll=()=>setShowSticky(window.scrollY>980);onScroll();window.addEventListener("scroll",onScroll,{passive:true});return()=>window.removeEventListener("scroll",onScroll)},[]);
  const scrollBook=()=>document.getElementById("book")?.scrollIntoView({behavior:"smooth"});
  return <div>
   <div className="announcement">NEW CLIENTS · COMPLIMENTARY AESTHETIC CONSULTATION <button onClick={scrollBook}>RESERVE YOURS →</button></div>

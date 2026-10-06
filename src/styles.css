@@ -458,3 +458,14 @@
   footer{padding-bottom:88px!important}
 }
 @media(max-width:390px){.headerBook{padding:9px 10px!important;font-size:11px!important}.brand span{font-size:18px!important;letter-spacing:3px!important}.brand small{font-size:6.5px!important}.floatCard{width:55%!important}}
+
+/* MOBILE FINAL MICRO-POLISH */
+@media(max-width:720px){
+ .announcement{display:flex!important;align-items:center;justify-content:center;gap:10px;min-height:34px!important;padding:7px 12px!important;font-size:8px!important;letter-spacing:1.35px!important;white-space:nowrap!important}
+ .announcement button{margin:0!important;padding:0!important;min-height:0!important;font-size:8px!important;letter-spacing:1px!important;white-space:nowrap}
+ .heroCopy{padding-top:40px!important;padding-bottom:32px!important}
+ .hero h1{margin-bottom:20px!important}.heroCopy>p{margin-bottom:20px!important}.actions{margin-bottom:22px!important}.trust{gap:12px 18px!important}
+ .heroMedia,.heroMedia>img{height:380px!important;min-height:380px!important}
+ .mobileStickyCta{width:calc(100% - 72px)!important;max-width:390px!important;min-height:48px!important}
+}
+@media(max-width:390px){.announcement{font-size:7px!important;letter-spacing:1px!important;gap:6px}.announcement button{font-size:7px!important}.heroCopy{padding-top:36px!important;padding-bottom:28px!important}}

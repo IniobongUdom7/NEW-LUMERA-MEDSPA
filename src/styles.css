@@ -440,3 +440,21 @@
   .heroCopy{padding:46px 28px 38px!important}.hero h1{font-size:47px!important}.heroCopy>p{font-size:16.5px!important}
   .floatCard{width:58%!important}.luxuryMarquee span{padding:0 25px!important}
 }
+
+
+/* FINAL CLIENT-READY POLISH */
+.brandStatement .eyebrow{color:#c6b9a6;display:block;margin-bottom:20px}.brandStatement blockquote{margin-top:0}
+@media (max-width:720px){
+  header{height:74px!important;min-height:74px!important;padding:0 16px!important}
+  .headerBook{min-height:44px!important;padding:10px 12px!important;font-size:12px!important}
+  .menuToggle{width:40px;height:40px}
+  .heroCopy{padding-top:46px!important;padding-bottom:38px!important}
+  .heroMedia,.heroMedia>img{height:390px!important;min-height:390px!important}
+  .floatCard{width:50%!important;max-width:205px!important;padding:15px 18px!important}
+  .floatCard strong{font-size:19px!important}.floatCard span{font-size:9.5px!important}
+  .section,.resultCopy,.provider,.booking,.faq{padding-top:64px!important;padding-bottom:64px!important}
+  .mobileStickyCta{left:50%!important;right:auto!important;transform:translateX(-50%);bottom:12px!important;width:calc(100% - 48px)!important;max-width:430px;min-height:50px!important;padding:11px 18px!important;font-size:14px!important;box-shadow:0 8px 24px rgba(20,20,17,.2)}
+  .statGrid strong{font-size:21px!important;letter-spacing:.02em}
+  footer{padding-bottom:88px!important}
+}
+@media(max-width:390px){.headerBook{padding:9px 10px!important;font-size:11px!important}.brand span{font-size:18px!important;letter-spacing:3px!important}.brand small{font-size:6.5px!important}.floatCard{width:55%!important}}

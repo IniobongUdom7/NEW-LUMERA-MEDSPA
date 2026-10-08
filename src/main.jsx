@@ -17,6 +17,9 @@ const faqs=[
 function App(){
  const [open,setOpen]=useState(0);
  const [sent,setSent]=useState(false);
+ const [sending,setSending]=useState(false);
+ const [formError,setFormError]=useState("");
+ const submitConsultation=async(e)=>{e.preventDefault();if(sending)return;setSending(true);setFormError("");try{const form=new FormData(e.currentTarget);const response=await fetch("/api/consultation",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:form.get("name"),email:form.get("email"),phone:form.get("phone"),interest:form.get("interest"),website:form.get("website")})});const result=await response.json().catch(()=>({}));if(!response.ok)throw new Error(result.error||"Unable to submit right now.");setSent(true)}catch(err){setFormError(err.message||"Please try again.")}finally{setSending(false)}};
  const [menuOpen,setMenuOpen]=useState(false);
  const [showSticky,setShowSticky]=useState(false);
  useEffect(()=>{const onScroll=()=>setShowSticky(window.scrollY>980);onScroll();window.addEventListener("scroll",onScroll,{passive:true});return()=>window.removeEventListener("scroll",onScroll)},[]);
@@ -81,15 +84,17 @@ function App(){
       <div className="contactLine"><MapPin/> Dallas, Texas</div><div className="contactLine"><Phone/> (214) 555-0148</div>
     </div>
     <div className="bookingCard">
-      {!sent ? <form onSubmit={e=>{e.preventDefault();setSent(true)}}>
+      {!sent ? <form onSubmit={submitConsultation}>
        <div className="formTitle"><CalendarDays/><div><strong>Request a consultation</strong><span>We'll follow up to confirm your appointment.</span></div></div>
        <label>FULL NAME<input required name="name" autoComplete="name" placeholder="Your name"/></label>
        <div className="two"><label>EMAIL<input required name="email" autoComplete="email" type="email" placeholder="you@email.com"/></label><label>PHONE<input required name="phone" autoComplete="tel" inputMode="tel" placeholder="(555) 000-0000"/></label></div>
        <label>I'M INTERESTED IN<select name="interest"><option>Injectables</option><option>Facials & Skin</option><option>Laser Treatments</option><option>Body Contouring</option><option>Not sure yet</option></select></label>
-       <label>WHAT WOULD YOU LIKE TO IMPROVE?<textarea name="goals" placeholder="Tell us briefly about your goals..."/></label>
-       <button className="btn dark full">Request My Consultation <ArrowRight size={17}/></button>
-       <small className="privacy">Demo form · No medical information is stored.</small>
-      </form> : <div className="success"><div>✓</div><h3>Request received.</h3><p>Thank you. Our team has received your consultation request and will be in touch shortly to help you with the next step.</p></div>}
+       <input name="website" type="text" tabIndex="-1" autoComplete="off" aria-hidden="true" style={{position:"absolute",left:"-9999px"}}/>
+       <p className="privacy">Please do not include medical or sensitive health information in this form.</p>
+       {formError&&<p role="alert" style={{color:"#a22",fontSize:"14px",marginBottom:"12px"}}>{formError}</p>}
+       <button className="btn dark full" disabled={sending}>{sending?"Submitting...":"Request My Consultation"} <ArrowRight size={17}/></button>
+       <small className="privacy">Demo website · Your contact details are submitted to the demo CRM for follow-up testing. Do not enter sensitive information.</small>
+      </form> : <div className="success"><div>✓</div><h3>Request received.</h3><p>Thank you. Your request has been saved. This is a demonstration website; no real appointment has been booked.</p></div>}
     </div>
    </section>
 
